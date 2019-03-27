@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Header from "../../components/header";
 
 class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Header />
         <Text>Home</Text>
       </View>
     );
@@ -14,8 +16,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 10,
     backgroundColor: "#fff"
   }
 });

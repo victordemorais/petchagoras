@@ -1,10 +1,6 @@
 import React from "react";
 import Home from "./screens/Home";
-import {
-  createStackNavigator,
-  createAppContainer,
-  createBottomTabNavigator
-} from "react-navigation";
+import { createAppContainer, createBottomTabNavigator } from "react-navigation";
 import TabBar from "./components/tab-bar";
 
 const MainRoutes = {

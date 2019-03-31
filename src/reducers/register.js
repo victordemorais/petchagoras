@@ -5,7 +5,7 @@ const register = (state = {}, action) => {
       return { ...state, ...action.payload }
     case DEFAULT_REGISTER:
       return { state: {} }
-    default:
+       default:
       return state
   }
 }

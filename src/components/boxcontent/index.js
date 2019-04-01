@@ -1,22 +1,42 @@
 import React, { Component } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList
+} from "react-native";
 
 class BoxContent extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <View>
+      <View style={{ marginBottom: 10 }}>
         <Text style={styles.text}>{this.props.name}</Text>
         <View style={styles.box}>
-          {this.props.data.map((data, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.boxImage}
-              onPress={() => alert("Hello world!")}
-            >
-              <Image source={data.path} style={styles.image} />
-            </TouchableOpacity>
-          ))}
-
+          <FlatList
+            data={this.props.data}
+            horizontal={true}
+            keyExtractor={item => item.id}
+            renderItem={({ item, index }) => {
+              console.log(index);
+              return (
+                <TouchableOpacity
+                  style={styles.boxImage}
+                  onPress={() =>
+                    this.props.navigation.navigate("ProductDescription", {
+                      id: item.id
+                    })
+                  }
+                >
+                  <Image source={item.path} style={styles.image} />
+                </TouchableOpacity>
+              );
+            }}
+          />
           <View />
         </View>
       </View>
@@ -35,13 +55,14 @@ const styles = StyleSheet.create({
     position: "relative"
   },
   boxImage: {
+    padding: 10,
     borderRadius: 3,
     marginRight: 10,
     backgroundColor: "#fff"
   },
   image: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     resizeMode: "contain"
   },
   text: {

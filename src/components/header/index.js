@@ -9,7 +9,12 @@ export default class Header extends Component {
           <Image source={logopq} style={styles.logo} />
         </View>
         <View style={styles.search}>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            onChangeText={() => null}
+            placeholder={"Pesquisar"}
+            placeholderTextColor="#a2a2a2"
+          />
         </View>
       </View>
     );
@@ -18,9 +23,11 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   content: {
+    padding: 10,
     height: 50,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    marginBottom: 10
   },
   logo: {
     width: 50,

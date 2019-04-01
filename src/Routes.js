@@ -1,6 +1,11 @@
 import React from "react";
 import Home from "./screens/Home";
-import { createAppContainer, createBottomTabNavigator } from "react-navigation";
+import ProductDescription from "./screens/ProductDescription";
+import {
+  createAppContainer,
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
 import TabBar from "./components/tab-bar";
 
 const MainRoutes = {
@@ -9,13 +14,18 @@ const MainRoutes = {
   }
 };
 
-// const StackNavigator = createStackNavigator(MainRoutes, {
-//   headerMode: "none",
-//   initialRouteName: "Home"
-// });
 const bottomNavigator = createBottomTabNavigator(MainRoutes, {
   tabBarComponent: props => <TabBar {...props} />
 });
-const Routes = createAppContainer(bottomNavigator);
+const routes = {
+  Home: { screen: bottomNavigator },
+  ProductDescription: { screen: ProductDescription }
+};
+
+const StackNavigator = createStackNavigator(routes, {
+  headerMode: "none",
+  initialRouteName: "Home"
+});
+const Routes = createAppContainer(StackNavigator);
 
 export default Routes;

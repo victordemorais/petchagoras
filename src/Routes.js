@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./screens/Home";
+
 import ProductDescription from "./screens/ProductDescription";
 import {
   createAppContainer,
@@ -7,6 +8,7 @@ import {
   createStackNavigator
 } from "react-navigation";
 import TabBar from "./components/tab-bar";
+import Login from "./screens/Login";
 
 const MainRoutes = {
   Home: {
@@ -19,12 +21,15 @@ const bottomNavigator = createBottomTabNavigator(MainRoutes, {
 });
 const routes = {
   Home: { screen: bottomNavigator },
-  ProductDescription: { screen: ProductDescription }
+  ProductDescription: { screen: ProductDescription },
+  Login: { screen: Login }
 };
+
+
 
 const StackNavigator = createStackNavigator(routes, {
   headerMode: "none",
-  initialRouteName: "Home"
+  initialRouteName: "Login"
 });
 const Routes = createAppContainer(StackNavigator);
 

@@ -18,9 +18,13 @@ const InputMask = (props) => (
 )
 const styles = StyleSheet.create({
     input: {
-        borderWidth: 1,
+        marginBottom: 10,
         width: "100%",
-        height: 50
+        height: 50,
+        borderRadius: 4,
+        borderColor: "#ccc",
+        shadowColor: "#000",
+        elevation: 2
     }
 })
 export default InputMask

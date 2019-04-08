@@ -42,6 +42,8 @@
 		05C4ADECD58C4F29A5C6E9A7 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156D2AF1BC946CDB6AB676B /* libRNGestureHandler.a */; };
 		B5C20C336E9C479B8A7057C7 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D032834C8104D438177247B /* libRNGestureHandler-tvOS.a */; };
 		C814FFA493C44A22A114BD08 /* libRNTextInputMask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5733F9E98FA4724B53511F9 /* libRNTextInputMask.a */; };
+		38A1F4B1020849EEB8BEA13A /* InputMask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A539177DD65141B68199810F /* InputMask.framework */; };
+		345FEE9D9F114925A8303FCA /* InputMaskTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = E355A32E0B9A490A88F1068B /* InputMaskTests.xctest */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +356,9 @@
 		5D032834C8104D438177247B /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		5F7866AF3C60452D9384D402 /* RNTextInputMask.xcodeproj */ = {isa = PBXFileReference; name = "RNTextInputMask.xcodeproj"; path = "../node_modules/react-native-text-input-mask/ios/RNTextInputMask/RNTextInputMask.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		E5733F9E98FA4724B53511F9 /* libRNTextInputMask.a */ = {isa = PBXFileReference; name = "libRNTextInputMask.a"; path = "libRNTextInputMask.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B4188F88BF454D8F9DB44E63 /* InputMask.xcodeproj */ = {isa = PBXFileReference; name = "InputMask.xcodeproj"; path = "../node_modules/react-native-text-input-mask/ios/RNTextInputMask/InputMask/InputMask.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A539177DD65141B68199810F /* InputMask.framework */ = {isa = PBXFileReference; name = "InputMask.framework"; path = "System/Library/Frameworks/InputMask.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		E355A32E0B9A490A88F1068B /* InputMaskTests.xctest */ = {isa = PBXFileReference; name = "InputMaskTests.xctest"; path = "InputMaskTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +389,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				05C4ADECD58C4F29A5C6E9A7 /* libRNGestureHandler.a in Frameworks */,
 				C814FFA493C44A22A114BD08 /* libRNTextInputMask.a in Frameworks */,
+				38A1F4B1020849EEB8BEA13A /* InputMask.framework in Frameworks */,
+				345FEE9D9F114925A8303FCA /* InputMaskTests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +583,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				7FF9629BB404450AB9674B61 /* RNGestureHandler.xcodeproj */,
 				5F7866AF3C60452D9384D402 /* RNTextInputMask.xcodeproj */,
+				B4188F88BF454D8F9DB44E63 /* InputMask.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1206,10 +1214,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1235,10 +1246,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1264,6 +1278,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
 			name = Debug;
@@ -1286,6 +1301,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1319,10 +1335,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1356,10 +1375,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1392,10 +1414,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};
@@ -1428,10 +1453,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 					"$(SRCROOT)\..\node_modules\react-native-text-input-mask\ios\RNTextInputMask\RNTextInputMask/**",
 				);
 			};

@@ -9,11 +9,11 @@ const InputMask = (props) => (
         <TextInputMask style={styles.input}
 
             //refInput={ref => { this.input = ref }}
-            refInput={props.ref}
+            refInput={props.refInput}
 
             onChangeText={(formatted, extracted) => {
-                console.log(formatted) // +1 (123) 456-78-90 valor = +1 ([000]) [000] [00] [00]
-                console.log(extracted) // 1234567890
+                console.log(formatted) // exemplo +1 (123) 456-78-90 mask= +1 ([000]) [000] [00] [00]
+                console.log(extracted) // exemplo 1234567890
             }}
             
             mask={props.mask}

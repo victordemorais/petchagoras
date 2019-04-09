@@ -7,31 +7,19 @@ class SignUp extends Component {
     super(props);
     console.log(this.props, 'Vamos ver o que ta chegando aqui')
 
-    this._registro = this._registro.bind(this)
+    this._confirmaSenha = this._confirmaSenha.bind(this)
     this.focusNextField = this.focusNextField.bind(this);
     this.inputs = {};
   }
-
 
   focusNextField(id) {
     this.inputs[id].focus();
   }
 
+  _confirmaSenha() {
 
-  _registro() {
-
-    const newAccount = {
-      nome: this.refInput.nome.value,
-      CPF: this.refInput.CPF.value,
-      email: this.refInput.email.value,
-      psw: this.refInput.psw.value,
-      confPsw: this.refInput.confPsw.value
-    }
-    if (newAccount.psw == newAccount.confPsw) {
-      Alert.alert('Cadastro realizado!')
-    }
-    else
-      Alert.alert('Senha não confere!')
+    this.psw === this.confPsw ? (Alert.alert('Cadastro realizado!')): (Alert.alert('Senhas não conferem!'))
+      
   }
   _equeciSenha() {
     Alert.alert('Esqueci minha senha!')
@@ -48,24 +36,28 @@ class SignUp extends Component {
             // so n lembro como utilizar direito 
             pera ai rapidão 
            */}
-          <InputMask onRef={(ref) => {
-            this.inputs['nome'] = ref;
-          }}
-            onSubmitEditing={() => {
-              this.focusNextField('email');
-            }}
-            label="Nome" maxLength={25} placeholder="Nome" />
-          <InputMask onRef={(ref) => {
-            this.inputs['cpf'] = ref;
-          }}
-            onSubmitEditing={() => {
-              this.focusNextField('email');
-            }} label="CPF" mask={"[000]{.}[000]{.}[000]{-}[00]"} placeholder="CPF" keyboardType="numeric" />
-          <InputMask refInput='email' placeholder="Email" keyboardType="email-address" />
-          <InputMask refInput='psw' placeholder="Senha" secureTextEntry={true} />
-          <InputMask refInput='confPsw' placeholder="Confirmar Senha" secureTextEntry={true} />
+          <InputMask
+            refInput={(nome) => this.nome = nome}
+            onSubmitEditing={(cpf) => this.cpf.focus()}
+            mask={"[AAAaaaaaaaaaaaaaa]"}maxLength={25} placeholder="Nome" />
 
-          <TouchableOpacity onPress={this._registro} style={styles.btn}>
+          <InputMask
+            refInput={(cpf) => this.cpf = cpf}
+            onSubmitEditing={(email) => this.email.focus()}
+            mask={"[000]{.}[000]{.}[000]{-}[00]"} placeholder="CPF" keyboardType="numeric" />
+
+          <InputMask refInput={(email) => this.email = email}
+            onSubmitEditing={(psw) => this.psw.focus()}
+            placeholder="Email" keyboardType="email-address" />
+
+          <InputMask refInput={(psw) => this.psw = psw}
+            onSubmitEditing={(confPsw) => this.confPsw.focus()} 
+            placeholder="Senha" secureTextEntry={true} />
+
+          <InputMask refInput={(confPsw) => this.confPsw = confPsw}
+            placeholder="Confirmar Senha" secureTextEntry={true} />
+
+          <TouchableOpacity onPress={this._confirmaSenha} style={styles.btn}>
             <Text style={styles.btnText}>Registrar</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={this._equeciSenha}>

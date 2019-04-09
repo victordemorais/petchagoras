@@ -22,6 +22,7 @@ const MainRoutes = {
 const bottomNavigator = createBottomTabNavigator(MainRoutes, {
   tabBarComponent: props => <TabBar {...props} />
 });
+
 const routes = {
   SignUp: {screen: SignUp},
   Home: { screen: bottomNavigator },
@@ -29,8 +30,6 @@ const routes = {
   Login: { screen: Login },
   Contato: { screen: Contato }
 };
-
-
 
 const StackNavigator = createStackNavigator(routes, {
   headerMode: "none",

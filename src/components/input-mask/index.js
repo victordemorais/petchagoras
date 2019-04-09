@@ -1,30 +1,51 @@
-import React from "react"
+import React,{Component} from "react"
 import { StyleSheet, View, Text } from "react-native"
 import TextInputMask from 'react-native-text-input-mask';
 
+export default class InputMask extends Component {
+    constructor(props) {
+        super(props)
+        console.log(this.props)
+    }
+    componentDidMount() {
+        if (this.props.onRef != null) {
+            this.props.onRef(this)
+        }
+    }
 
-const InputMask = (props) => (
-    <View>
-        {/*<Text>{props.label}</Text> **/}
-        <TextInputMask style={styles.input}
+    onSubmitEditing() {
+        this.props.onSubmitEditing();
+    }
 
-            //refInput={ref => { this.input = ref }}
-            refInput={props.refInput}
+    focus() {
+        this.textInput.focus()
+    }
 
-            onChangeText={(formatted, extracted) => {
-                console.log(formatted) // exemplo +1 (123) 456-78-90 mask= +1 ([000]) [000] [00] [00]
-                console.log(extracted) // exemplo 1234567890
-            }}
-            
-            mask={props.mask}
-            placeholder={props.placeholder}
-            maxLength={props.maxLength}
-            keyboardType={props.keyboardType}
-            secureTextEntry={props.secureTextEntry}
-            
-        />
-    </View>
-)
+
+    render() {
+        return (
+            <TextInputMask style={styles.input}
+
+                //refInput={ref => { this.input = ref }}
+                refInput={input => this.textInput = input}
+                onSubmitEditing={this.onSubmitEditing.bind(this)}
+                onChangeText={(formatted, extracted) => {
+                    console.log(formatted) // exemplo +1 (123) 456-78-90 mask= +1 ([000]) [000] [00] [00]
+                    console.log(extracted) // exemplo 1234567890
+                }}
+
+                mask={this.props.mask}
+                placeholder={this.props.placeholder}
+                maxLength={this.props.maxLength}
+                keyboardType={this.props.keyboardType}
+                secureTextEntry={this.props.secureTextEntry}
+            />
+        )
+    }
+
+}
+
+
 const styles = StyleSheet.create({
     input: {
         marginBottom: 12,
@@ -36,5 +57,4 @@ const styles = StyleSheet.create({
         elevation: 2
     }
 })
-export default InputMask
 

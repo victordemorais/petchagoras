@@ -1,16 +1,37 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Alert } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Alert, TextInput } from "react-native";
 import InputMask from "../../components/input-mask";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props, 'Vamos ver o que ta chegando aqui')
+
+    this.state = {
+      nome:'', 
+      cpf: '',
+      email:'',
+      psw:'',
+      confPsw:''
+    }
+
+    //console.log(this.props, 'Vamos ver o que ta chegando aqui')
+    console.log(this.state.nome, 'state')
 
     this._confirmaSenha = this._confirmaSenha.bind(this)
-    this.focusNextField = this.focusNextField.bind(this);
+    this.focusNextField = this.focusNextField.bind(this)
+    //this.handleInputChange = this.handleInputChange.bind(this)
     this.inputs = {};
   }
+
+  /** handleInputChange(event){
+    const target = event.target
+    const value = target.type
+    const name = target.name
+
+    this.setState({
+      [name]:value
+    })
+  }*/
 
   focusNextField(id) {
     this.inputs[id].focus();
@@ -29,22 +50,22 @@ class SignUp extends Component {
     return (
       <View >
         <Text style={styles.text}>Registrar</Text>
-
+        
         <View style={styles.container}>
-          {/* Mano , refInput ele recebe uma função por isso ta dando pau ai rs . tenho que mandar por função o refinput exato , vai fazer tipo 
-            (value) => this.input(value) 
-            // so n lembro como utilizar direito 
-            pera ai rapidão 
-           */}
+          <Text>Nome:{this.state.nome} </Text>
+
+          <TextInput onChangeText={(nome) => this.setState({nome})}/>
+
           <InputMask
             refInput={(nome) => this.nome = nome}
             onSubmitEditing={(cpf) => this.cpf.focus()}
-            mask={"[AAAaaaaaaaaaaaaaa]"}maxLength={25} placeholder="Nome" />
+            onChangeText={(nome) => this.setState({nome})}
+            maxLength={25} placeholder="Nome" />
 
           <InputMask
             refInput={(cpf) => this.cpf = cpf}
             onSubmitEditing={(email) => this.email.focus()}
-            mask={"[000]{.}[000]{.}[000]{-}[00]"} placeholder="CPF" keyboardType="numeric" />
+            mask={"[000]{.}[000]{.}[000]{-}[00]"} placeholder="CPF" keyboardType="numeric"  />
 
           <InputMask refInput={(email) => this.email = email}
             onSubmitEditing={(psw) => this.psw.focus()}
@@ -63,6 +84,7 @@ class SignUp extends Component {
           <TouchableOpacity onPress={this._equeciSenha}>
             <Text style={{ alignSelf: 'center' }}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
+        
         </View>
       </View>
     )

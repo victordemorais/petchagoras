@@ -43,7 +43,7 @@ class SignUp extends Component {
       
   }
   _equeciSenha() {
-    Alert.alert('Esqueci minha senha!')
+    Alert.alert('Esqueci a minha senha!')
   }
 
   render() {

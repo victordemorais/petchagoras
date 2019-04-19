@@ -33,7 +33,7 @@ const routes = {
 
 const StackNavigator = createStackNavigator(routes, {
   headerMode: "none",
-  initialRouteName: "Login"
+  initialRouteName: "SignUp"
 });
 const Routes = createAppContainer(StackNavigator);
 

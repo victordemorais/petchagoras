@@ -12,8 +12,9 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.stylesLogin}>
-                <InputMask label="Login"  />
-                <InputMask label="Senha" />
+                <Text style={styles.text}> Login </Text>
+                <InputMask placeholder="Login"  />
+                <InputMask placeholder="Senha" />
                 <Button title="Entrar" color="orange">  </Button>
             </View>
 
@@ -25,7 +26,13 @@ class Login extends Component {
 const styles=StyleSheet.create({
    stylesLogin: {
     
-   } 
+   } ,
+   text: {
+    marginTop: 30,
+    fontSize: 35,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
 })
 
 

@@ -5,8 +5,12 @@ import {
   Text,
   TouchableOpacity,
   Alert,
+  ImageBackground,
+  ScrollView
 } from "react-native";
 import InputMask from "../../components/input-mask";
+
+import logo from "../../../assets/img/logo-pq.png";
 
 class SignUp extends Component {
   constructor(props) {
@@ -22,24 +26,27 @@ class SignUp extends Component {
 
     this._confirmaSenha = this._confirmaSenha.bind(this);
     this.focusNextField = this.focusNextField.bind(this);
-
     this.inputs = {};
   }
-
 
   focusNextField(id) {
     this.inputs[id].focus();
   }
 
   _confirmaSenha() {
-    this.state.psw === this.state.confPsw
-      ? Alert.alert("Cadastro realizado!")
-      : Alert.alert("Senhas não conferem!");
+    this.state.psw !== ""
+      ? this.state.confPsw !== ""
+        ? this.state.psw === this.state.confPsw
+          ? Alert.alert("Cadastro realizado!")
+          : Alert.alert("Senhas não conferem!")
+        : Alert.alert("Necessário confirmar senha!")
+      : Alert.alert("Necessário informar uma senha!");
   }
+
   _equeciSenha() {
     Alert.alert("Esqueci a minha senha!");
   }
-            /* 
+  /* 
             InputMask que vai tratar os inputs, definindo por props quais serão as caracteristicas do input 
             onChangeText recebe o valor digitado e altera o state dessa classe
             refInput recebe um valor como referencia (no primeiro caso, nome) 
@@ -51,59 +58,66 @@ class SignUp extends Component {
             */
   render() {
     return (
-      <View>
-        <Text style={styles.text}>Registrar</Text>
+      <ScrollView>
+        {/*console.log(this.state, "teste")*/}
+        <ImageBackground
+          source={logo}
+          opacity={0.2}
+          resizeMode="center"
+          style={{ width: "100%", height: "100%" }}
+        >
+          <Text style={styles.text}>Registrar</Text>
 
-        <View style={styles.container}>
+          <View style={styles.container}>
+            <InputMask
+              onChangeText={nome => this.setState({ nome })}
+              refInput={nome => (this.nome = nome)}
+              onSubmitEditing={cpf => this.cpf.focus()}
+              maxLength={25}
+              placeholder="Nome"
+            />
 
-          <InputMask
-            onChangeText={nome => this.setState({ nome })}
-            refInput={nome => (this.nome = nome)}
-            onSubmitEditing={cpf => this.cpf.focus()}
-            maxLength={25}
-            placeholder="Nome"
-          />
+            <InputMask
+              onChangeText={cpf => this.setState({ cpf })}
+              refInput={cpf => (this.cpf = cpf)}
+              onSubmitEditing={email => this.email.focus()}
+              mask={"[000]{.}[000]{.}[000]{-}[00]"}
+              placeholder="CPF"
+              keyboardType="numeric"
+            />
 
-          <InputMask
-            onChangeText={cpf => this.setState({ cpf })}
-            refInput={cpf => (this.cpf = cpf)}
-            onSubmitEditing={email => this.email.focus()}
-            mask={"[000]{.}[000]{.}[000]{-}[00]"}
-            placeholder="CPF"
-            keyboardType="numeric"
-          />
+            <InputMask
+              refInput={email => (this.email = email)}
+              onChangeText={email => this.setState({ email })}
+              onSubmitEditing={psw => this.psw.focus()}
+              placeholder="Email"
+              keyboardType="email-address"
+            />
 
-          <InputMask
-            refInput={email => (this.email = email)}
-            onChangeText={email => this.setState({ email })}
-            onSubmitEditing={psw => this.psw.focus()}
-            placeholder="Email"
-            keyboardType="email-address"
-          />
+            <InputMask
+              onChangeText={psw => this.setState({ psw })}
+              refInput={psw => (this.psw = psw)}
+              onSubmitEditing={confPsw => this.confPsw.focus()}
+              placeholder="Senha"
+              secureTextEntry={true}
+            />
 
-          <InputMask
-            onChangeText={psw => this.setState({ psw })}
-            refInput={psw => (this.psw = psw)}
-            onSubmitEditing={confPsw => this.confPsw.focus()}
-            placeholder="Senha"
-            secureTextEntry={true}
-          />
+            <InputMask
+              onChangeText={confPsw => this.setState({ confPsw })}
+              refInput={confPsw => (this.confPsw = confPsw)}
+              placeholder="Confirmar Senha"
+              secureTextEntry={true}
+            />
 
-          <InputMask
-            onChangeText={confPsw => this.setState({ confPsw })}
-            refInput={confPsw => (this.confPsw = confPsw)}
-            placeholder="Confirmar Senha"
-            secureTextEntry={true}
-          />
-
-          <TouchableOpacity onPress={this._confirmaSenha} style={styles.btn}>
-            <Text style={styles.btnText}>Registrar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._equeciSenha}>
-            <Text style={{ alignSelf: "center" }}>Esqueceu sua senha?</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+            <TouchableOpacity onPress={this._confirmaSenha} style={styles.btn}>
+              <Text style={styles.btnText}>Registrar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this._equeciSenha}>
+              <Text style={{ alignSelf: "center" }}>Esqueceu sua senha?</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </ScrollView>
     );
   }
 }

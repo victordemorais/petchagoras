@@ -3,9 +3,9 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class ProductSchema extends Schema {
+class FavoriteSchema extends Schema {
   up () {
-    this.create('products', table => {
+    this.create('favorites', table => {
       table.increments()
       table
         .integer('user_id')
@@ -15,22 +15,19 @@ class ProductSchema extends Schema {
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
       table
-        .integer('file_id')
+        .integer('product_id')
         .unsigned()
         .references('id')
-        .inTable('files')
+        .inTable('products')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
-      table.string('name').notNullable()
-      table.text('description').notNullable()
-      table.decimal('value', 9, 2).notNullable()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('products')
+    this.drop('favorites')
   }
 }
 
-module.exports = ProductSchema
+module.exports = FavoriteSchema

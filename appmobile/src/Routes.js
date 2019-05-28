@@ -12,7 +12,6 @@ import Login from "./screens/Login";
 import SignUp from "./screens/SignUp";
 import Contato from "./screens/Contato";
 
-
 const MainRoutes = {
   Home: {
     screen: Home
@@ -24,7 +23,7 @@ const bottomNavigator = createBottomTabNavigator(MainRoutes, {
 });
 
 const routes = {
-  SignUp: {screen: SignUp},
+  SignUp: { screen: SignUp },
   Home: { screen: bottomNavigator },
   ProductDescription: { screen: ProductDescription },
   Login: { screen: Login },
@@ -33,7 +32,7 @@ const routes = {
 
 const StackNavigator = createStackNavigator(routes, {
   headerMode: "none",
-  initialRouteName: "SignUp"
+  initialRouteName: "Login"
 });
 const Routes = createAppContainer(StackNavigator);
 
